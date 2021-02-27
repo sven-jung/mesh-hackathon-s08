@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/matching/matching_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/matching/matching_view.dart" afterDir="false" />
-    </list>
+    <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +22,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -57,22 +54,22 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="275" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614421173297" />
-    <state width="1353" height="333" key="GridCell.Tab.0.bottom" timestamp="1614446788654">
+    <state width="1353" height="333" key="GridCell.Tab.0.bottom" timestamp="1614448430174">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="333" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
-    <state width="1353" height="333" key="GridCell.Tab.0.center" timestamp="1614446788654">
+    <state width="1353" height="333" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614448430174" />
+    <state width="1353" height="333" key="GridCell.Tab.0.center" timestamp="1614448430173">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="333" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
-    <state width="1353" height="333" key="GridCell.Tab.0.left" timestamp="1614446788654">
+    <state width="1353" height="333" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614448430173" />
+    <state width="1353" height="333" key="GridCell.Tab.0.left" timestamp="1614448430173">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="333" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
-    <state width="1353" height="333" key="GridCell.Tab.0.right" timestamp="1614446788654">
+    <state width="1353" height="333" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614448430173" />
+    <state width="1353" height="333" key="GridCell.Tab.0.right" timestamp="1614448430174">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="333" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
+    <state width="1353" height="333" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614448430174" />
     <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614448250561">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

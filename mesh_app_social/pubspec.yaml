@@ -35,6 +35,13 @@ dependencies:
 
   flutter_tindercard: ^0.2.0
 
+  shared_preferences: ^0.5.7+3
+
+  permission_handler:
+
+  cached_network_image: ^2.3.2+1
+
+  url_launcher: ^5.7.10
 
 
 

@@ -33,7 +33,7 @@ class _LookingForState extends State<LookingFor> {
           // onTap: fn,
           onTap: () {
             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                builder: (context) => Skills()
+                builder: (context) => Skills(isInvestor: widget.isInvestor)
             ), (Route<dynamic> route) => false,);
           },
           child: Container(

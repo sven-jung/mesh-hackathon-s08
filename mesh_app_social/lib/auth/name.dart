@@ -70,61 +70,67 @@ class _NameState extends State<Name> {
                   ],
                 ),
                 borderRadius: borderRadius,
-                child: Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
-                    height: MediaQuery.of(context).size.height*0.6,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Wie ist dein Name?",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(30),
-                        ),
-                        TextField(
-                          selectionWidthStyle: BoxWidthStyle.max,
-                          textAlign: TextAlign.center,
-                          cursorColor: Colors.black,
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                          autofocus: true,
-                          onChanged: (val) {
-                            setState(() {
-                              name = val;
-                            });
-                          },
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if(name != '') {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Type()));
-                            }
-                          },
-                          child: Container(
-                            margin: EdgeInsets.all(50),
-                            height: 30,
-                            child: Text(
-                              "Weiter",
-                              textAlign: TextAlign.center,
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width*0.8,
+                        height: MediaQuery.of(context).size.height*0.6,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Wie ist dein Name?",
+                              textAlign: TextAlign.left,
                               style: TextStyle(
-                                fontSize: 20,
+                                color: Colors.black,
+                                fontSize: 25,
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                            Padding(
+                              padding: EdgeInsets.all(30),
+                            ),
+                            TextField(
+                              selectionWidthStyle: BoxWidthStyle.max,
+                              textAlign: TextAlign.center,
+                              cursorColor: Colors.black,
+                              style: TextStyle(
+                                fontSize: 25,
+                              ),
+                              autofocus: true,
+                              onChanged: (val) {
+                                setState(() {
+                                  name = val;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+
+                    name == '' ? Center() : GestureDetector(
+                      onTap: () {
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Type()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(25),
+                        height: 30,
+                        child: Text(
+                          "Weiter",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

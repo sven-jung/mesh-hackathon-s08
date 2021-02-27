@@ -125,12 +125,112 @@ class _MatchingViewState extends State<MatchingView> {
                                 width: MediaQuery.of(context).size.width*0.7,
                                 height: MediaQuery.of(context).size.height*0.7,
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset("assets/mesh.png"),
-                                    Image.asset("assets/huk.png"),
-                                    Image.asset("assets/barmer.png"),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width*0.7,
+                                      height: MediaQuery.of(context).size.height*0.45,
+                                      child: Image.asset("assets/jan_mesh_red_bull.jpg"),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Jan Engbert",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            color: Color(0xFF1d3557),
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Colors.red.withOpacity(0.7),
+                                                Colors.red.withOpacity(0.5),
+                                              ],
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          child: Text(
+                                            "#StartUp Idee",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(padding: EdgeInsets.all(10)),
+                                    Text(
+                                      "Meine Idee beschäftigt sich damit, Unmengen an Red Bull zu kaufen "
+                                          "und damit die Meme Competition zu gewinnen. "
+                                          "Außerdem bin ich CEO von Stratton Oakmont.\n",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Ich suche:",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Color(0xFF1d3557),
+                                      ),
+                                    ),
+                                    Padding(padding: EdgeInsets.all(5)),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Colors.green.withOpacity(0.7),
+                                                Colors.green.withOpacity(0.5),
+                                              ],
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          child: Text(
+                                            "#Investor",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(padding: EdgeInsets.all(2.5)),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Colors.blue.withOpacity(0.7),
+                                                Colors.blue.withOpacity(0.5),
+                                              ],
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          child: Text(
+                                            "#Frontend Developer",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),

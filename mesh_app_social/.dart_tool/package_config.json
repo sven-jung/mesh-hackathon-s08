@@ -74,6 +74,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "dash_chat",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/dash_chat-1.1.15",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0-nullsafety.1",
       "packageUri": "lib/",
@@ -108,6 +114,12 @@
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cache_manager-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.6"
+    },
+    {
+      "name": "flutter_parsed_text",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_parsed_text-1.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -374,6 +386,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "transparent_image",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/transparent_image-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "1.24"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.0-nullsafety.3",
       "packageUri": "lib/",
@@ -452,7 +470,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-02-27T11:24:30.752302Z",
+  "generated": "2021-02-27T17:26:34.827054Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

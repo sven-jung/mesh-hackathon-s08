@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/auth/looking_for.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/looking_for.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/name.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/name.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/type.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/splashpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/splashpage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/auth/skills.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/skills.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +53,22 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="275" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614421173297" />
-    <state width="1353" height="304" key="GridCell.Tab.0.bottom" timestamp="1614430604817">
+    <state width="1353" height="304" key="GridCell.Tab.0.bottom" timestamp="1614435017858">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614430604817" />
-    <state width="1353" height="304" key="GridCell.Tab.0.center" timestamp="1614430604817">
+    <state width="1353" height="304" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017858" />
+    <state width="1353" height="304" key="GridCell.Tab.0.center" timestamp="1614435017857">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614430604817" />
-    <state width="1353" height="304" key="GridCell.Tab.0.left" timestamp="1614430604816">
+    <state width="1353" height="304" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017857" />
+    <state width="1353" height="304" key="GridCell.Tab.0.left" timestamp="1614435017856">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614430604816" />
-    <state width="1353" height="304" key="GridCell.Tab.0.right" timestamp="1614430604817">
+    <state width="1353" height="304" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017856" />
+    <state width="1353" height="304" key="GridCell.Tab.0.right" timestamp="1614435017858">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614430604817" />
+    <state width="1353" height="304" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017858" />
     <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614432858495">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

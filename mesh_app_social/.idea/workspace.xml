@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/elon_musk.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/jan_mesh_red_bull.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/chat/chat_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chat/chat_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/chat/in_chat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chat/in_chat.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/profile/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/profile_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/matching/matching_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/matching/matching_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +73,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1353" height="333" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
-    <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614446349642">
+    <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614448250561">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1514" y="261" width="585" height="534" key="find.popup/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446349642" />
+    <state x="-1514" y="261" width="585" height="534" key="find.popup/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614448250561" />
     <state x="-1566" y="246" key="run.anything.popup" timestamp="1614434061247">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

@@ -12,12 +12,10 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
-
   String name = '';
 
   @override
   Widget build(BuildContext context) {
-
     double borderRadius = 20;
 
     return Container(
@@ -28,8 +26,7 @@ class _NameState extends State<Name> {
             colors: [
               Color(0xFF456b9d),
               Color(0xFF1d3557),
-            ]
-        ),
+            ]),
       ),
       child: GestureDetector(
         onTap: () {
@@ -40,7 +37,10 @@ class _NameState extends State<Name> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            title: Text(MyApp.appName, textAlign: TextAlign.center,),
+            title: Text(
+              MyApp.appName,
+              textAlign: TextAlign.center,
+            ),
           ),
           resizeToAvoidBottomPadding: false,
           backgroundColor: Colors.transparent,
@@ -50,15 +50,17 @@ class _NameState extends State<Name> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 boxShadow: [
-                  BoxShadow(color: Colors.grey.withOpacity(0.3),
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 5,
                     blurRadius: 7,
-                    offset: Offset(0, 3),),
+                    offset: Offset(0, 3),
+                  ),
                 ],
               ),
               child: GlassmorphicContainer(
-                width: MediaQuery.of(context).size.width*0.9,
-                height: MediaQuery.of(context).size.height*0.7,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.7,
                 border: 2,
                 blur: 50,
                 linearGradient: LinearGradient(
@@ -68,8 +70,7 @@ class _NameState extends State<Name> {
                       Colors.white.withOpacity(0.1),
                       Colors.white.withOpacity(0.125),
                       Colors.white.withOpacity(0.15),
-                    ]
-                ),
+                    ]),
                 borderGradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -84,8 +85,8 @@ class _NameState extends State<Name> {
                   children: [
                     Center(
                       child: Container(
-                        width: MediaQuery.of(context).size.width*0.8,
-                        height: MediaQuery.of(context).size.height*0.6,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: MediaQuery.of(context).size.height * 0.6,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,25 +121,30 @@ class _NameState extends State<Name> {
                         ),
                       ),
                     ),
-
-                    name == '' ? Center() : GestureDetector(
-                      onTap: () {
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Type()));
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(25),
-                        height: 30,
-                        child: Text(
-                          "Weiter",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
+                    name == ''
+                        ? Center()
+                        : GestureDetector(
+                            onTap: () {
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Type()));
+                            },
+                            child: Container(
+                              margin: EdgeInsets.all(25),
+                              height: 30,
+                              child: Text(
+                                "Weiter",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

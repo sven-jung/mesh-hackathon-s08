@@ -1,0 +1,4 @@
+#Sat Feb 27 10:54:27 CET 2021
+base.0=C\:\\Users\\georg\\Projekte mit Sven\\Hackathon\\Mesh\\mesh-hackathon-s08\\mesh_app_social\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

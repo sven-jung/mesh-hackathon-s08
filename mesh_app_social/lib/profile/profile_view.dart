@@ -99,46 +99,49 @@ class _ProfileViewState extends State<ProfileView> {
             ],
           ),
           borderRadius: borderRadius,
-          child: Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.6,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.settings,
-                        size: 35,
-                      )
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30071999),
+                        child: Image.asset(
+                          "assets/jan.jpg",
+                          width: MediaQuery.of(context).size.width * 0.40,
+                        ),
+                      ),
+                      Text(
+                        "Jan Engbert",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(
+                        '# Redbull tragen\n# Mesh Meme Lord\n# Part-time \$GME shortseller\n# Founder of Stratton Oakmont',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      _getButton(text: "Meine Ideen", fn: () {}, colors: [
+                        Colors.orange[700].withOpacity(0.7),
+                        Colors.orange[700].withOpacity(0.5)
+                      ]),
                     ],
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(30071999),
-                    child: Image.asset(
-                      "assets/jan.jpg",
-                      width: MediaQuery.of(context).size.width * 0.40,
-                    ),
-                  ),
-                  Text(
-                    "Jan Engbert",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '# Redbull tragen\n# Mesh Meme Lord\n# Part-time \$GME shortseller\n# Founder of Stratton Oakmont',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  _getButton(text: "Meine Ideen", fn: () {}, colors: [
-                    Colors.red.withOpacity(0.7),
-                    Colors.red.withOpacity(0.5)
-                  ]),
-                ],
+                ),
               ),
-            ),
+              IconButton(
+                icon: Icon(
+                  Icons.settings,
+                  size: 35,
+                ),
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
       ),

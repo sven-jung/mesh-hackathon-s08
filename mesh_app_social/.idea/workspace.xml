@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/elon_musk.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/jan_mesh_red_bull.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/chat/chat_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chat/chat_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/frame.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/frame.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/matching/matching_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/matching/matching_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/chat/in_chat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chat/in_chat.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/profile_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +37,13 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\georg\Projekte mit Sven\Hackathon\Mesh\mesh-hackathon-s08\mesh_app_social\assets" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -54,26 +69,26 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="275" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614421173297" />
-    <state width="1353" height="304" key="GridCell.Tab.0.bottom" timestamp="1614435017858">
+    <state width="1353" height="333" key="GridCell.Tab.0.bottom" timestamp="1614446788654">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017858" />
-    <state width="1353" height="304" key="GridCell.Tab.0.center" timestamp="1614435017857">
+    <state width="1353" height="333" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
+    <state width="1353" height="333" key="GridCell.Tab.0.center" timestamp="1614446788654">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017857" />
-    <state width="1353" height="304" key="GridCell.Tab.0.left" timestamp="1614435017856">
+    <state width="1353" height="333" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
+    <state width="1353" height="333" key="GridCell.Tab.0.left" timestamp="1614446788654">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017856" />
-    <state width="1353" height="304" key="GridCell.Tab.0.right" timestamp="1614435017858">
+    <state width="1353" height="333" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
+    <state width="1353" height="333" key="GridCell.Tab.0.right" timestamp="1614446788654">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1353" height="304" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614435017858" />
-    <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614432858495">
+    <state width="1353" height="333" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446788654" />
+    <state x="-1514" y="261" width="585" height="534" key="find.popup" timestamp="1614446349642">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1514" y="261" width="585" height="534" key="find.popup/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614432858495" />
+    <state x="-1514" y="261" width="585" height="534" key="find.popup/0.0.1536.824/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1614446349642" />
     <state x="-1566" y="246" key="run.anything.popup" timestamp="1614434061247">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

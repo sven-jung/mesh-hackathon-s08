@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:mesh_app_social/auth/type.dart';
 
+import '../main.dart';
+
 class Name extends StatefulWidget {
   @override
   _NameState createState() => _NameState();
@@ -34,9 +36,16 @@ class _NameState extends State<Name> {
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            title: Text(MyApp.appName, textAlign: TextAlign.center,),
+          ),
           resizeToAvoidBottomPadding: false,
           backgroundColor: Colors.transparent,
-          body: Center(
+          body: Container(
+            alignment: Alignment.topCenter,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(borderRadius)),

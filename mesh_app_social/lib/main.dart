@@ -8,6 +8,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
 
+  static String appName = "Teamy";
+
   @override
   Widget build(BuildContext context) {
 

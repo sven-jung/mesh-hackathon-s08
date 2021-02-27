@@ -4,6 +4,8 @@ import 'package:glassmorphism/glassmorphism.dart';
 import 'package:mesh_app_social/auth/login.dart';
 import 'package:mesh_app_social/frame.dart';
 
+import 'main.dart';
+
 class Splashpage extends StatefulWidget {
   @override
   _SplashpageState createState() => _SplashpageState();
@@ -46,6 +48,12 @@ class _SplashpageState extends State<Splashpage> {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          title: Text(MyApp.appName, textAlign: TextAlign.center,),
+        ),
         backgroundColor: Colors.transparent,
         body: Center(
           child: Container(

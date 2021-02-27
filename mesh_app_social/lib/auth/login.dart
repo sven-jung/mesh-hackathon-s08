@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:mesh_app_social/auth/name.dart';
 
+import '../main.dart';
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -79,6 +81,12 @@ class _LoginState extends State<Login> {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          title: Text(MyApp.appName, textAlign: TextAlign.center,),
+        ),
         backgroundColor: Colors.transparent,
         body: Stack(
           alignment: Alignment.bottomCenter,

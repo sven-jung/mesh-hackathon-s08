@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:mesh_app_social/auth/looking_for.dart';
 
+import '../main.dart';
+
 
 ///
 /// Investor oder Gründer
@@ -30,6 +32,12 @@ class _TypeState extends State<Type> {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          title: Text(MyApp.appName, textAlign: TextAlign.center,),
+        ),
         backgroundColor: Colors.transparent,
         body: Center(
           child: Container(
@@ -58,7 +66,7 @@ class _TypeState extends State<Type> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LookingFor(isInvestor: false,)));
                     },
                     child: GlassmorphicContainer(
                       width: MediaQuery.of(context).size.width*0.9,
@@ -110,7 +118,7 @@ class _TypeState extends State<Type> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LookingFor(isInvestor: true,)));
                     },
                     child: GlassmorphicContainer(
                       width: MediaQuery.of(context).size.width*0.9,

@@ -17,5 +17,6 @@ namespace Mesh_s08_API.Models
         public cardType Type { get; set; }
         public string ImageBase64 { get; set; }
         public string Description { get; set; }
+        public string MainTag { get; set; }
     }
 }

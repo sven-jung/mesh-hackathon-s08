@@ -16,7 +16,17 @@ namespace Mesh_s08_API.Controllers
 
         }
 
-        
+
+        [Route("api/swiped")]
+        [HttpPut]
+        public async Task<IActionResult> swiped(bool Liked, string CardId)
+        {
+            if () //liked
+            {
+
+            }
+        }
+
         [Route("api/swipe/cards")]
         [HttpGet]
         public async Task<Card[]> getCards(FilerModel filter,int size = 5)
@@ -25,7 +35,7 @@ namespace Mesh_s08_API.Controllers
             var userAge = 18;
             filter = new FilerModel
             {
-                Tags = new[] {"pc", "rl", "angular"}
+                Tags = new[] {"pc", "rl", "angular"},
             };
             
             List<Card> Result = new List<Card>();

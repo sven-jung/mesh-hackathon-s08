@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace Mesh_s08_API.Models
 {
-    public enum  cardType
+    public enum userType
     {
         investor,
-        founder,
-        creative
+        founder
     }
 }

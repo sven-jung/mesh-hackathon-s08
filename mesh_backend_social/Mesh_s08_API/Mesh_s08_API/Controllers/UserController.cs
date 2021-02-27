@@ -10,9 +10,23 @@ namespace Mesh_s08_API.Controllers
     {
         [Route("api/user/edit/tags")]
         [HttpPut]
-        public async Task<IActionResult> EditTask(string[] tasks)
+        public async Task<IActionResult> EditTags(string[] tasks)
         {
             //update data base
+        }
+
+        [Route("api/user/edit/name")]
+        [HttpPut]
+        public async Task<IActionResult> EditName(string name)
+        {
+            //update DB
+        }
+
+        [Route("api/user/edit/type")]
+        [HttpPut]
+        public async Task<IActionResult> EditType(int type)
+        {
+            //update DB
         }
     }
 }

@@ -3,10 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mesh_app_social/splashpage.dart';
 
 void main() {
-
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) async{
-    runApp(MyApp());
-  });
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,9 +18,6 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      supportedLocales: [
-        const Locale('de', 'DE'),
-      ],
       home: Splashpage(),
     );
   }

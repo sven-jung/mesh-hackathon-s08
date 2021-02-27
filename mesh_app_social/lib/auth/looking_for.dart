@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 import 'package:mesh_app_social/auth/skills.dart';
 import 'package:mesh_app_social/main.dart';
 
 class LookingFor extends StatefulWidget {
-
   final bool isInvestor;
 
   LookingFor({this.isInvestor});
@@ -16,7 +16,6 @@ class LookingFor extends StatefulWidget {
 }
 
 class _LookingForState extends State<LookingFor> {
-
   @override
   void initState() {
     super.initState();
@@ -32,23 +31,29 @@ class _LookingForState extends State<LookingFor> {
           //TODO: Change to
           // onTap: fn,
           onTap: () {
-            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                builder: (context) => Skills(isInvestor: widget.isInvestor)
-            ), (Route<dynamic> route) => false,);
+            fn();
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Skills(isInvestor: widget.isInvestor)),
+              (Route<dynamic> route) => false,
+            );
           },
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
               boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.3),
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3),),
+                  offset: Offset(0, 3),
+                ),
               ],
             ),
             child: GlassmorphicContainer(
-              width: MediaQuery.of(context).size.width*0.8,
-              height: MediaQuery.of(context).size.height*0.1,
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.1,
               border: 1,
               blur: 50,
               linearGradient: LinearGradient(
@@ -70,13 +75,12 @@ class _LookingForState extends State<LookingFor> {
               borderRadius: borderRadius,
               child: Center(
                   child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )
-              ),
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              )),
             ),
           ),
         ),
@@ -85,17 +89,10 @@ class _LookingForState extends State<LookingFor> {
   }
 
   List<String> _listButtons() {
-    if(widget.isInvestor) {
-      return <String>[
-        "Ich suche StartUps",
-        "Ich suche Partner"
-      ];
+    if (widget.isInvestor) {
+      return <String>["StartUps", "Partner"];
     } else {
-      return <String>[
-        "Ich suche Partner",
-        "Ich suche Investoren",
-        "Ich suche Ideen"
-      ];
+      return <String>["Partner", "Investoren", "Ideen"];
     }
   }
 
@@ -103,8 +100,10 @@ class _LookingForState extends State<LookingFor> {
     List<Widget> widgets = <Widget>[];
     _listButtons().forEach((element) {
       widgets.add(_getButton(
-        text: element,
-        fn: () {},
+        text: "Ich suche " + element,
+        fn: () {
+          MyApp.prefs.setString("LookingFor", element);
+        },
       ));
     });
     return widgets;
@@ -120,21 +119,23 @@ class _LookingForState extends State<LookingFor> {
             colors: [
               Color(0xFF456b9d),
               Color(0xFF1d3557),
-            ]
-        ),
+            ]),
       ),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          title: Text(MyApp.appName, textAlign: TextAlign.center,),
+          title: Text(
+            MyApp.appName,
+            textAlign: TextAlign.center,
+          ),
         ),
         backgroundColor: Colors.transparent,
         body: Center(
           child: Container(
-            height: MediaQuery.of(context).size.height*0.8,
-            width: MediaQuery.of(context).size.width*0.8,
+            height: MediaQuery.of(context).size.height * 0.8,
+            width: MediaQuery.of(context).size.width * 0.8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,

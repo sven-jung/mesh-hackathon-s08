@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 import 'package:mesh_app_social/auth/looking_for.dart';
 
 import '../main.dart';
-
 
 ///
 /// Investor oder Gründer
@@ -15,9 +15,35 @@ class Type extends StatefulWidget {
 }
 
 class _TypeState extends State<Type> {
+  Future _makePutRequest(mail, password) async {
+    // set up PUT request arguments
+    try {
+      String url =
+          'https://localhost:44356/api/register?email=$mail&password=$password';
+      String token = MyApp.prefs.getString("access_Token");
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "key": "Authorization",
+        "value": "Bearer $token"
+      };
+      String json = '{}'; // make PUT request
+      Response response = await put(url,
+          headers: headers, body: json); // check the status code for the result
+      int statusCode = response
+          .statusCode; // this API passes back the updated item with the id added
+      if (statusCode == 200) {
+        return true;
+      } else {
+        print(statusCode);
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-
     double borderRadius = 20;
 
     return Container(
@@ -28,15 +54,17 @@ class _TypeState extends State<Type> {
             colors: [
               Color(0xFF456b9d),
               Color(0xFF1d3557),
-            ]
-        ),
+            ]),
       ),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          title: Text(MyApp.appName, textAlign: TextAlign.center,),
+          title: Text(
+            MyApp.appName,
+            textAlign: TextAlign.center,
+          ),
         ),
         backgroundColor: Colors.transparent,
         body: Center(
@@ -56,21 +84,29 @@ class _TypeState extends State<Type> {
                 Padding(padding: EdgeInsets.all(10)),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(borderRadius)),
                     boxShadow: [
-                      BoxShadow(color: Colors.grey.withOpacity(0.3),
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3),),
+                        offset: Offset(0, 3),
+                      ),
                     ],
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LookingFor(isInvestor: false,)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LookingFor(
+                                    isInvestor: false,
+                                  )));
                     },
                     child: GlassmorphicContainer(
-                      width: MediaQuery.of(context).size.width*0.9,
-                      height: MediaQuery.of(context).size.height*0.35,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.35,
                       border: 2,
                       blur: 50,
                       linearGradient: LinearGradient(
@@ -80,8 +116,7 @@ class _TypeState extends State<Type> {
                             Colors.white.withOpacity(0.5),
                             Colors.white.withOpacity(0.3),
                             Colors.white.withOpacity(0.2),
-                          ]
-                      ),
+                          ]),
                       borderGradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -103,26 +138,32 @@ class _TypeState extends State<Type> {
                     ),
                   ),
                 ),
-                
                 Padding(padding: EdgeInsets.all(20)),
-                
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(borderRadius)),
                     boxShadow: [
-                      BoxShadow(color: Colors.grey.withOpacity(0.3),
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3),),
+                        offset: Offset(0, 3),
+                      ),
                     ],
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LookingFor(isInvestor: true,)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LookingFor(
+                                    isInvestor: true,
+                                  )));
                     },
                     child: GlassmorphicContainer(
-                      width: MediaQuery.of(context).size.width*0.9,
-                      height: MediaQuery.of(context).size.height*0.35,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.35,
                       border: 2,
                       blur: 50,
                       linearGradient: LinearGradient(
@@ -132,8 +173,7 @@ class _TypeState extends State<Type> {
                             Colors.white.withOpacity(0.2),
                             Colors.white.withOpacity(0.3),
                             Colors.white.withOpacity(0.5),
-                          ]
-                      ),
+                          ]),
                       borderGradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,

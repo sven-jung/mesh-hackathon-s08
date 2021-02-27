@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 import 'package:mesh_app_social/auth/type.dart';
 
 import '../main.dart';
@@ -12,6 +14,33 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
+  Future _makePutRequest(mail, password) async {
+    // set up PUT request arguments
+    try {
+      String url =
+          'https://localhost:44356/api/register?email=$mail&password=$password';
+      String token = MyApp.prefs.getString("access_Token");
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "key": "Authorization",
+        "value": "Bearer $token"
+      };
+      String json = '{}'; // make PUT request
+      Response response = await put(url,
+          headers: headers, body: json); // check the status code for the result
+      int statusCode = response
+          .statusCode; // this API passes back the updated item with the id added
+      if (statusCode == 200) {
+        return true;
+      } else {
+        print(statusCode);
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
   String name = '';
 
   @override
@@ -127,10 +156,14 @@ class _NameState extends State<Name> {
                             onTap: () {
                               FocusScope.of(context)
                                   .requestFocus(new FocusNode());
-                              Navigator.pushReplacement(
+                              _makePutRequest("", "").then(
+                                (value) => Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Type()));
+                                    builder: (context) => Type(),
+                                  ),
+                                ),
+                              );
                             },
                             child: Container(
                               margin: EdgeInsets.all(25),

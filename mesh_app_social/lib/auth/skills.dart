@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 import 'package:mesh_app_social/frame.dart';
 import 'package:mesh_app_social/main.dart';
 
 class Skills extends StatefulWidget {
-
   bool isInvestor;
   static String firstHashtag = '';
 
@@ -21,11 +21,36 @@ class Skills extends StatefulWidget {
 }
 
 class _SkillsState extends State<Skills> {
+  Future _makePutRequest(mail, password) async {
+    // set up PUT request arguments
+    try {
+      String url =
+          'https://localhost:44356/api/register?email=$mail&password=$password';
+      String token = MyApp.prefs.getString("access_Token");
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "key": "Authorization",
+        "value": "Bearer $token"
+      };
+      String json = '{}'; // make PUT request
+      Response response = await put(url,
+          headers: headers, body: json); // check the status code for the result
+      int statusCode = response
+          .statusCode; // this API passes back the updated item with the id added
+      if (statusCode == 200) {
+        return true;
+      } else {
+        print(statusCode);
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
 
   List<String> hashtags = [
     Skills.firstHashtag,
   ];
-
 
   List<Widget> _getHashtags() {
     List<Widget> widgets = <Widget>[];
@@ -33,57 +58,56 @@ class _SkillsState extends State<Skills> {
       TextEditingController c = TextEditingController();
       c.addListener(() {
         c.value = c.value.copyWith(
-          text: c.text,
-          selection: TextSelection(baseOffset: c.text.length, extentOffset: c.text.length),
-          composing: TextRange.empty
-        );
+            text: c.text,
+            selection: TextSelection(
+                baseOffset: c.text.length, extentOffset: c.text.length),
+            composing: TextRange.empty);
       });
       c.text = element;
-      widgets.add(
-        Row(
-          children: [
-            Text(
-              '#',
+      widgets.add(Row(
+        children: [
+          Text(
+            '#',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.white, fontSize: 25),
+          ),
+          Padding(padding: EdgeInsets.only(left: 20)),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.55,
+            child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  hashtags[hashtags.indexOf(element)] = val;
+                  c.selection = TextSelection.collapsed(offset: val.length);
+                });
+              },
+              controller: c,
+              cursorColor: Colors.white,
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 25
+                fontSize: 25,
               ),
             ),
-            Padding(padding: EdgeInsets.only(left: 20)),
-            Container(
-              width: MediaQuery.of(context).size.width*0.55,
-              child: TextField(
-                onChanged: (val) {
-                  setState(() {
-                    hashtags[hashtags.indexOf(element)] = val;
-                    c.selection = TextSelection.collapsed(offset: val.length);
-                  });
-                },
-                controller: c,
-                cursorColor: Colors.white,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
+          ),
+          IconButton(
+              icon: Icon(
+                Icons.close,
+                color: Colors.white,
               ),
-            ),
-            IconButton(icon: Icon(Icons.close, color: Colors.white,), onPressed: () {
-              setState(() {
-                hashtags.remove(element);
-              });
-            }),
-          ],
-        )
-      );
+              onPressed: () {
+                setState(() {
+                  hashtags.remove(element);
+                });
+              }),
+        ],
+      ));
     });
     return widgets;
   }
 
   @override
   Widget build(BuildContext context) {
-
     double borderRadius = 20;
 
     return Container(
@@ -94,8 +118,7 @@ class _SkillsState extends State<Skills> {
             colors: [
               Color(0xFF456b9d),
               Color(0xFF1d3557),
-            ]
-        ),
+            ]),
       ),
       child: GestureDetector(
         onTap: () {
@@ -106,7 +129,10 @@ class _SkillsState extends State<Skills> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            title: Text(MyApp.appName, textAlign: TextAlign.center,),
+            title: Text(
+              MyApp.appName,
+              textAlign: TextAlign.center,
+            ),
           ),
           resizeToAvoidBottomPadding: false,
           backgroundColor: Colors.transparent,
@@ -116,25 +142,27 @@ class _SkillsState extends State<Skills> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
                 boxShadow: [
-                  BoxShadow(color: Colors.grey.withOpacity(0.3),
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 5,
                     blurRadius: 7,
-                    offset: Offset(0, 3),),
+                    offset: Offset(0, 3),
+                  ),
                 ],
               ),
               child: GlassmorphicContainer(
-                width: MediaQuery.of(context).size.width*0.9,
-                height: MediaQuery.of(context).size.height*0.85,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.85,
                 border: 2,
                 blur: 50,
                 linearGradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.white.withOpacity(0.1),
-                      Colors.white.withOpacity(0.125),
-                      Colors.white.withOpacity(0.15),
-                    ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.white.withOpacity(0.1),
+                    Colors.white.withOpacity(0.125),
+                    Colors.white.withOpacity(0.15),
+                  ],
                 ),
                 borderGradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -150,7 +178,7 @@ class _SkillsState extends State<Skills> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width*0.8,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       child: Column(
                         children: [
                           Text(
@@ -169,7 +197,10 @@ class _SkillsState extends State<Skills> {
                           ),
                           Center(
                             child: IconButton(
-                              icon: Icon(Icons.add, color: Colors.white,),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
                               onPressed: () {
                                 setState(() {
                                   hashtags.add("");
@@ -180,15 +211,23 @@ class _SkillsState extends State<Skills> {
                         ],
                       ),
                     ),
-
                     GestureDetector(
                       onTap: () {
                         FocusScope.of(context).requestFocus(new FocusNode());
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Frame()));
+                        _makePutRequest("", "password").then(
+                          (value) => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Frame(),
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         alignment: Alignment.centerRight,
-                        margin: EdgeInsets.only(right: 20,),
+                        margin: EdgeInsets.only(
+                          right: 20,
+                        ),
                         height: 40,
                         child: Text(
                           "Weiter\n\n",
@@ -209,4 +248,6 @@ class _SkillsState extends State<Skills> {
       ),
     );
   }
+
+  put(String url, {Map<String, String> headers, String body}) {}
 }

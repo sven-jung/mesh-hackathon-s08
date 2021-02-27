@@ -31,6 +31,13 @@ class _SkillsState extends State<Skills> {
     List<Widget> widgets = <Widget>[];
     hashtags.forEach((element) {
       TextEditingController c = TextEditingController();
+      c.addListener(() {
+        c.value = c.value.copyWith(
+          text: c.text,
+          selection: TextSelection(baseOffset: c.text.length, extentOffset: c.text.length),
+          composing: TextRange.empty
+        );
+      });
       c.text = element;
       widgets.add(
         Row(
@@ -50,6 +57,7 @@ class _SkillsState extends State<Skills> {
                 onChanged: (val) {
                   setState(() {
                     hashtags[hashtags.indexOf(element)] = val;
+                    c.selection = TextSelection.collapsed(offset: val.length);
                   });
                 },
                 controller: c,

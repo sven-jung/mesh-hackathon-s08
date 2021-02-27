@@ -63,6 +63,7 @@ flutter:
     - assets/barmer.png
     - assets/huk.png
     - assets/mesh.png
+    - assets/jan.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

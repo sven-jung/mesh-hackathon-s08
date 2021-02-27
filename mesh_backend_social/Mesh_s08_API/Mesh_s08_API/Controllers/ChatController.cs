@@ -22,7 +22,7 @@ namespace Mesh_s08_API.Controllers
         [HttpPut]
         public async Task<IActionResult> SendMessage(string chatId)
         {
-
+            return Ok();
         }
     }
 }

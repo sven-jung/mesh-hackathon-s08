@@ -12,5 +12,7 @@ namespace Mesh_s08_API.Models
         public string Description { get; set; }
         public string Owner { get; set; }
         public string ImageBase64 { get; set; }
+        public string Title { get; set; }
+        
     }
 }

@@ -21,10 +21,7 @@ namespace Mesh_s08_API.Controllers
         [HttpPut]
         public async Task<IActionResult> swiped(bool Liked, string CardId)
         {
-            if () //liked
-            {
-
-            }
+            return BadRequest();
         }
 
         [Route("api/swipe/cards")]

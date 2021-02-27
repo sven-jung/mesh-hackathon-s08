@@ -12,6 +12,8 @@ namespace Mesh_s08_API.Controllers
         [HttpPut]
         public async Task<IActionResult> EditTags(string[] tasks)
         {
+            return BadRequest();
+
             //update data base
         }
 
@@ -19,6 +21,8 @@ namespace Mesh_s08_API.Controllers
         [HttpPut]
         public async Task<IActionResult> EditName(string name)
         {
+            return BadRequest();
+
             //update DB
         }
 
@@ -26,6 +30,8 @@ namespace Mesh_s08_API.Controllers
         [HttpPut]
         public async Task<IActionResult> EditType(int type)
         {
+            return BadRequest();
+
             //update DB
         }
     }

@@ -30,12 +30,12 @@ namespace Db_access
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
-            {
-                rdr.
-                Console.WriteLine("{0} {1} {2}", rdr.GetInt32(0), rdr.GetString(1),
-                    rdr.GetInt32(2));
-            }
+            //while (rdr.Read())
+            //{
+            //    rdr.
+            //    Console.WriteLine("{0} {1} {2}", rdr.GetInt32(0), rdr.GetString(1),
+            //        rdr.GetInt32(2));
+            //}
         }
     }
 }

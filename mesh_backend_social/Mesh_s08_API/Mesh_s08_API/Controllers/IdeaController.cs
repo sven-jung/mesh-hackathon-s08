@@ -11,12 +11,14 @@ namespace Mesh_s08_API.Controllers
     {
         [Route("api/add/idea/")]
         [HttpPost]
-        public async Task<IActionResult> createIdea(Ideas IdeaModel)
+        public async Task<IActionResult> CreateIdea(Ideas IdeaModel)
         {
             for (int i = 0; i < IdeaModel.Tags.Length; i++)
             {
                 IdeaModel.Tags[i] = IdeaModel.Tags[i].ToLower();
             }
+
+            return BadRequest();
             //add to db
         }
     }

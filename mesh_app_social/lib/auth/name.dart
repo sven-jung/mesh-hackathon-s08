@@ -24,8 +24,8 @@ class _NameState extends State<Name> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF3494E6),
-              Color(0xFFEC6EAD),
+              Color(0xFF456b9d),
+              Color(0xFF1d3557),
             ]
         ),
       ),

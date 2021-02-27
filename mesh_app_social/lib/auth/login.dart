@@ -73,8 +73,8 @@ class _LoginState extends State<Login> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF3494E6),
-              Color(0xFFEC6EAD),
+              Color(0xFF456b9d),
+              Color(0xFF1d3557),
             ]
         ),
       ),
@@ -124,6 +124,9 @@ class _LoginState extends State<Login> {
               child: Text(
                 "Registrieren",
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
           ],

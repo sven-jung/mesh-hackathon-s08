@@ -24,8 +24,8 @@ class _TypeState extends State<Type> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF3494E6),
-              Color(0xFFEC6EAD),
+              Color(0xFF456b9d),
+              Color(0xFF1d3557),
             ]
         ),
       ),
@@ -33,15 +33,6 @@ class _TypeState extends State<Type> {
         backgroundColor: Colors.transparent,
         body: Center(
           child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-              boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),),
-              ],
-            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,39 +46,50 @@ class _TypeState extends State<Type> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
-                  },
-                  child: GlassmorphicContainer(
-                    width: MediaQuery.of(context).size.width*0.9,
-                    height: MediaQuery.of(context).size.height*0.35,
-                    border: 2,
-                    blur: 50,
-                    linearGradient: LinearGradient(
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),),
+                    ],
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
+                    },
+                    child: GlassmorphicContainer(
+                      width: MediaQuery.of(context).size.width*0.9,
+                      height: MediaQuery.of(context).size.height*0.35,
+                      border: 2,
+                      blur: 50,
+                      linearGradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.white.withOpacity(0.5),
+                            Colors.white.withOpacity(0.3),
+                            Colors.white.withOpacity(0.2),
+                          ]
+                      ),
+                      borderGradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Colors.white.withOpacity(0.2),
-                          Colors.white.withOpacity(0.3),
-                          Colors.white.withOpacity(0.5),
-                        ]
-                    ),
-                    borderGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFFffffff).withOpacity(0.5),
-                        Color((0xFFFFFFFF)).withOpacity(0.5),
-                      ],
-                    ),
-                    borderRadius: borderRadius,
-                    child: Center(
-                      child: Text(
-                        "GRÜNDER",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 40,
+                          Color(0xFFffffff).withOpacity(0.5),
+                          Color((0xFFFFFFFF)).withOpacity(0.5),
+                        ],
+                      ),
+                      borderRadius: borderRadius,
+                      child: Center(
+                        child: Text(
+                          "GRÜNDER ✨",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
                         ),
                       ),
                     ),
@@ -96,39 +98,50 @@ class _TypeState extends State<Type> {
                 
                 Padding(padding: EdgeInsets.all(20)),
                 
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
-                  },
-                  child: GlassmorphicContainer(
-                    width: MediaQuery.of(context).size.width*0.9,
-                    height: MediaQuery.of(context).size.height*0.35,
-                    border: 2,
-                    blur: 50,
-                    linearGradient: LinearGradient(
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),),
+                    ],
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookingFor()));
+                    },
+                    child: GlassmorphicContainer(
+                      width: MediaQuery.of(context).size.width*0.9,
+                      height: MediaQuery.of(context).size.height*0.35,
+                      border: 2,
+                      blur: 50,
+                      linearGradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.white.withOpacity(0.2),
+                            Colors.white.withOpacity(0.3),
+                            Colors.white.withOpacity(0.5),
+                          ]
+                      ),
+                      borderGradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Colors.white.withOpacity(0.2),
-                          Colors.white.withOpacity(0.3),
-                          Colors.white.withOpacity(0.5),
-                        ]
-                    ),
-                    borderGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFFffffff).withOpacity(0.5),
-                        Color((0xFFFFFFFF)).withOpacity(0.5),
-                      ],
-                    ),
-                    borderRadius: borderRadius,
-                    child: Center(
-                      child: Text(
-                        "INVESTOR",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 40,
+                          Color(0xFFffffff).withOpacity(0.5),
+                          Color((0xFFFFFFFF)).withOpacity(0.5),
+                        ],
+                      ),
+                      borderRadius: borderRadius,
+                      child: Center(
+                        child: Text(
+                          "INVESTOR 💰",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
                         ),
                       ),
                     ),

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/auth/looking_for.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/auth/name.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/auth/skills.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/auth/type.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/profile/ideas/edit_idea.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/profile/ideas/idea_partners.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/profile/ideas/ideas_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/profile/ideas/new_idea.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/profile/settings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/splashpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/splashpage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

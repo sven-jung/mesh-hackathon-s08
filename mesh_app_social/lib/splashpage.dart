@@ -25,7 +25,7 @@ class _SplashpageState extends State<Splashpage> {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container();

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\georg\\Projekte mit Sven\\Hackathon\\Mesh\\mesh-hackathon-s08\\mesh_app_social\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "outputFile": "D:\\Dokumente\\GitHub\\mesh-hackathon-s08\\mesh_app_social\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-zh-rCN\\values-zh-rCN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-2\\files-2.1\\6b399c2363bb098ebde1725d903cbda0\\core-1.1.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "source": "C:\\Users\\svenj\\.gradle\\caches\\transforms-2\\files-2.1\\6b399c2363bb098ebde1725d903cbda0\\core-1.1.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\georg\\Projekte mit Sven\\Hackathon\\Mesh\\mesh-hackathon-s08\\mesh_app_social\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-zh-rCN\\values-zh-rCN.xml",
+            "outputFile": "D:\\Dokumente\\GitHub\\mesh-hackathon-s08\\mesh_app_social\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-2\\files-2.1\\6b399c2363bb098ebde1725d903cbda0\\core-1.1.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "source": "C:\\Users\\svenj\\.gradle\\caches\\transforms-2\\files-2.1\\6b399c2363bb098ebde1725d903cbda0\\core-1.1.0\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

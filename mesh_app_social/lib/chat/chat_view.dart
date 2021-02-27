@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 
 class ChatView extends StatefulWidget {
   @override
@@ -8,6 +9,12 @@ class ChatView extends StatefulWidget {
 class _ChatViewState extends State<ChatView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    double borderRadius = 20;
+
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      
+    );
   }
 }

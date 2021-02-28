@@ -1,4 +1,4 @@
-# Teamy - Tinder für Tinder
+# Teamy - Tinder für BARMER
 
 # Kurzbeschreibung
 Teamy ist das Tinder für Gründer, Partner und Sponsoren. Es verbindet Gleichgesinnte, um gemeinsam an Projekten zu arbeiten. Ferner fungiert es als Übersetzungshilfe zwischen Dinosauriern (KMUs) und Einhörnern (Startups), indem es spannende Challenges anbietet.

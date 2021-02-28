@@ -67,7 +67,7 @@ namespace Db_access
         {
             string value;
 
-            string queryString = "DELETE tags WHERE value != ' " + tags[0] + "' ";
+            string queryString = "DELETE FROM tags WHERE value != ' " + tags[0] + "' ";
 
             for (int i = 1; i < tags.Length; i++)
             {

@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Db_access;
+using Db_access.TableModels;
 using Mesh_s08_API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 
 namespace Mesh_s08_API.Controllers
 {
     public class SwipeController : Controller
     {
-        public SwipeController()
-        {
+        private readonly IConfiguration _configuration;
 
+        public SwipeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
         }
 
 
@@ -29,22 +35,14 @@ namespace Mesh_s08_API.Controllers
         public async Task<card[]> getCards(FilerModel filter,int size = 5)
         {
             //call the db with the filter
-            var userAge = 18;
-            filter = new FilerModel
-            {
-                Tags = new[] {"pc", "rl", "angular"},
-            };
-            
-            List<Card> Result = new List<Card>();
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            List<Card> Cards = new List<Card>
-            {
-                new Card {Age = 21, Tags = new[] {"pc", "rl", "angular"}},
-                new Card {Age = 23, Tags = new[] {"pc", "rl", "angular"}},
-                new Card {Age = 25, Tags = new[] {"pc", "angular"}},
-                new Card {Age = 27, Tags = new[] {"pc", "rl"}}
-            };
-            Dictionary<int, List<Card>> map = new Dictionary<int, List<Card>>();
+            var userAge = Handler.getUserAge(userId, _configuration.GetConnectionString("DefaultConnection"));
+            List<card> Cards = Handler.getCards(filter.Tags, (int)filter.Type, _configuration.GetConnectionString("DefaultConnection"));
+
+            List<card> Result = new List<card>();
+
+            Dictionary<int, List<card>> map = new Dictionary<int, List<card>>();
 
             foreach (var card in Cards)
             {
@@ -63,7 +61,7 @@ namespace Mesh_s08_API.Controllers
                 }
                 else
                 {
-                    map.Add(value, new List<Card>{card});
+                    map.Add(value, new List<card> {card});
                 }
             }
             foreach (var keyValuePair in map.OrderBy(x=> x.Key).Reverse())

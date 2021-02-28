@@ -17,11 +17,39 @@ namespace Db_access
 
             if (filterTypeIndex <= 1)
             {
+                string queryUser = $"SELECT users_id_users FROM tags WHERE value = '{tags[0]}' ";
 
+                for(int i = 1; i < tags.Length; i++)
+                {
+                    queryUser += "OR value = '{tags[i]}' ";
+                }
+                queryUser += ";";
+
+                using (MySqlConnection connection = new MySqlConnection(cs))
+                {
+                    MySqlCommand command = new MySqlCommand(queryUser, connection);
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    reader.Close();
+                }
             }
             else
             {
+                string queryIdea = $"SELECT ideas_id_ideas FROM tags_ideas WHERE value = '{tags[0]}' ";
 
+                for (int i = 1; i < tags.Length; i++)
+                {
+                    queryIdea += "OR value = '{tags[i]}' ";
+                }
+                queryIdea += ";";
+
+                using (MySqlConnection connection = new MySqlConnection(cs))
+                {
+                    MySqlCommand command = new MySqlCommand(queryIdea, connection);
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    reader.Close();
+                }
             }
 
             using var con = new MySqlConnection(cs);

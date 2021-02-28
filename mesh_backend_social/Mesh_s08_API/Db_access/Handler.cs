@@ -62,5 +62,31 @@ namespace Db_access
             //        rdr.GetInt32(2));
             //}
         }
+
+        public static void updateUserTags(int userId, string[] tags, string cs)
+        {
+            string value;
+
+            string queryString = "DELETE tags WHERE value != ' " + tags[0] + "' ";
+
+            for (int i = 1; i < tags.Length; i++)
+            {
+                value = tags[i];
+                queryString += " AND value != '" + value + "'";
+
+            }
+
+            queryString += " AND users_id_users = '" + userID + "';";
+
+            using (MySqlConnection connection = new MySqlConnection(cs))
+            {
+                MySqlCommand command = new MySqlCommand(queryString, connection);
+
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+            }
+
+        }
     }
+    
 }

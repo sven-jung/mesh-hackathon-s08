@@ -140,9 +140,8 @@ namespace Db_access
                     id_users = rdr.GetString(0),
                     name = rdr.GetString(1),
                     description = rdr.GetString(2),
-                    type = rdr.GetValue(3);
+                    type = (type)Enum.Parse(typeof(type), rdr.GetValue(3).ToString(), true)
                 };
-                var test = ;
                 
             }
 
@@ -170,7 +169,7 @@ namespace Db_access
         {
             string value;
 
-            string queryString = "DELETE FROM tags WHERE value != ' " + tags[0] + "' ";
+            string queryString = "DELETE tags WHERE value != ' " + tags[0] + "' ";
 
             for (int i = 1; i < tags.Length; i++)
             {

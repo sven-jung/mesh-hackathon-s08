@@ -14,7 +14,7 @@ class _ProfileViewState extends State<ProfileView> {
   _makeGetRequest() async {
     // make GET request
     try {
-      String url = 'http://teamy.eu-de.mybluemix.net/api/swipe/cards';
+      String url = 'http://teamy.eu-de.mybluemix.net/api/get/user';
       Response response = await get(url); // sample info available in response
       int statusCode = response.statusCode;
       Map<String, String> headers = response.headers;

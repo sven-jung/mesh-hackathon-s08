@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:http/http.dart';
+import 'package:mesh_app_social/matching/filter_matches.dart';
 
 class MatchingView extends StatefulWidget {
   @override
@@ -30,6 +31,15 @@ class _MatchingViewState extends State<MatchingView> {
     }
   }
 
+  bool filtering = false;
+
+  @override
+  void setState(fn) {
+    if(this.mounted) {
+      super.setState(fn);
+    }
+  }
+
   Map json;
 
   @override
@@ -39,7 +49,58 @@ class _MatchingViewState extends State<MatchingView> {
   }
 
   _filter() {
-    
+    Navigator.of(context).push(PageRouteBuilder(
+        pageBuilder: (context, a, b) => GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.all(Radius.circular(24))),
+            content: GlassmorphicContainer(
+              width: MediaQuery.of(context).size.width*0.9,
+              height: MediaQuery.of(context).size.height * 0.6,
+              border: 1,
+              blur: 10,
+              linearGradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.transparent.withOpacity(0.1),
+                  Colors.transparent.withOpacity(0.2),
+                ],
+              ),
+              borderGradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFFffffff).withOpacity(0.5),
+                  Color(0xFFFFFFFF).withOpacity(0.5),
+                ],
+              ),
+              borderRadius: 24,
+              child: FilterMatches(
+                filterFn: (String args) {
+                  if(args == null || args.isEmpty) {
+                    // close popup
+                    Navigator.pop(context);
+                  } else {
+                    Navigator.pop(context);
+                    setState(() {filtering = true;});
+                    _makeGetRequest(params: args);
+                    Future.delayed(Duration(seconds: 3)).then((value) {
+                      setState(() {filtering = false;});
+                    });
+                  }
+                },
+              ),
+            ),
+          ),
+        ),
+        opaque: false));
   }
 
   @override
@@ -161,7 +222,8 @@ class _MatchingViewState extends State<MatchingView> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.45,
-                                      child: json["cards"][index]["pic"] != null ? Image.memory(json["cards"][index]["pic"]) : Image.asset(
+                                      child: json["cards"] != null && json["cards"][index] != null && json["cards"][index]["pic"] != null
+                                          ? Image.memory(json["cards"][index]["pic"]) : Image.asset(
                                           "assets/jan_mesh_red_bull.jpg"),
                                     ),
                                     Row(
@@ -169,7 +231,8 @@ class _MatchingViewState extends State<MatchingView> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          json["cards"][index]["name"] != null ? json["cards"][index]["name"] : "Jan Engbert",
+                                          json["cards"] != null && json["cards"][index] != null && json["cards"][index]["name"] != null
+                                              ? json["cards"][index]["name"] : "Jan Engbert",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             color: Color(0xFF1d3557),
@@ -191,7 +254,8 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            json["cards"][index]["maintag"] != null ? json["cards"][index]["maintag"] : "#StartUp Idee",
+                                            json["cards"] != null && json["cards"][index] != null && json["cards"][index]["maintag"] != null
+                                                ? json["cards"][index]["maintag"] : "#StartUp Idee",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
@@ -202,7 +266,8 @@ class _MatchingViewState extends State<MatchingView> {
                                     ),
                                     Padding(padding: EdgeInsets.all(10)),
                                     Text(
-                                      json["cards"][index]["descr"] != null ? json["cards"][index]["descr"] :
+                                      json["cards"] != null && json["cards"][index] != null && json["cards"][index]["descr"] != null
+                                          ? json["cards"][index]["descr"] :
                                       "Meine Idee beschäftigt sich damit, Unmengen an Red Bull zu kaufen "
                                       "und damit die Meme Competition zu gewinnen. "
                                       "Außerdem bin ich CEO von Stratton Oakmont.\n",
@@ -237,7 +302,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            json["cards"][index]["tags"] != null && json["cards"][index]["tags"][0] != null
+                                            json["cards"] != null && json["cards"][index] != null && json["cards"][index]["tags"] != null && json["cards"][index]["tags"][0] != null
                                                 ? "#" + json["cards"][index]["tags"][0]
                                                 : "#Investor",
                                             textAlign: TextAlign.center,
@@ -263,7 +328,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            json["cards"][index]["tags"] != null && json["cards"][index]["tags"][1] != null
+                                            json["cards"] != null && json["cards"][index] != null && json["cards"][index]["tags"] != null && json["cards"][index]["tags"][1] != null
                                                 ? "#" + json["cards"][index]["tags"][1]
                                                 : "#Frontend Developer",
                                             textAlign: TextAlign.center,
@@ -301,6 +366,7 @@ class _MatchingViewState extends State<MatchingView> {
             ],
           ),
         ),
+        filtering ? CupertinoActivityIndicator(radius: 75,) : Center(),
       ],
     );
   }

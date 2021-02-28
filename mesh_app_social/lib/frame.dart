@@ -105,6 +105,7 @@ class _FrameState extends State<Frame> {
       ),
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomPadding: false,
           bottomNavigationBar: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),

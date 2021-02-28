@@ -67,6 +67,10 @@ flutter:
     - assets/barmer.png
     - assets/huk.png
     - assets/mesh.png
+    - assets/matthias.png
+    - assets/enes.png
+    - assets/mesh_card.png
+    - assets/teamy_card.png
     - assets/jan.jpg
     - assets/elon_musk.jpg
     - assets/jan_mesh_red_bull.jpg

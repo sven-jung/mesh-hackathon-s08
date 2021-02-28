@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 
 class ProfileView extends StatefulWidget {
   @override
@@ -7,6 +11,32 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  _makeGetRequest() async {
+    // make GET request
+    try {
+      String url = 'http://teamy.eu-de.mybluemix.net/api/get/user';
+      Response response = await get(url); // sample info available in response
+      int statusCode = response.statusCode;
+      Map<String, String> headers = response.headers;
+      String contentType = headers['content-type'];
+      setState(() {
+        json = jsonDecode(response.body);
+      });
+    } catch (e) {
+      setState(() {
+        json = {};
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _makeGetRequest();
+  }
+
+  Map json;
+
   _getButton({String text, Function fn, colors}) {
     double borderRadius = 999;
 
@@ -99,7 +129,7 @@ class _ProfileViewState extends State<ProfileView> {
             ],
           ),
           borderRadius: borderRadius,
-          child: Stack(
+          child: json == null ? CupertinoActivityIndicator() : Stack(
             alignment: Alignment.topRight,
             children: [
               Center(
@@ -118,10 +148,11 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                       ),
                       Text(
-                        "Jan Engbert",
+                        json["name"] != null ? json["name"] : "Jan Engbert",
                         style: TextStyle(fontSize: 30),
                       ),
                       Text(
+                        json["tags"] != null ? json["tags"] :
                         '# Redbull tragen\n# Mesh Meme Lord\n# Part-time \$GME shortseller\n# Founder of Stratton Oakmont',
                         textAlign: TextAlign.left,
                         style: TextStyle(color: Colors.white, fontSize: 18),
@@ -129,6 +160,10 @@ class _ProfileViewState extends State<ProfileView> {
                       _getButton(text: "Meine Ideen", fn: () {}, colors: [
                         Colors.orange[700].withOpacity(0.7),
                         Colors.orange[700].withOpacity(0.5)
+                      ]),
+                      _getButton(text: "Meine Challenges", fn: () {}, colors: [
+                        Colors.green[700].withOpacity(0.7),
+                        Colors.greenAccent[700].withOpacity(0.5)
                       ]),
                     ],
                   ),

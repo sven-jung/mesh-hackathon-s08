@@ -8,9 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   static String appName = "Teamy";
-  SharedPreferences prefs;
+  static SharedPreferences prefs;
 
   _initSharedPreferences() async {
     prefs = await SharedPreferences.getInstance();
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // Always keep the portrait mode of device
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,

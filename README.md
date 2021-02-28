@@ -14,5 +14,5 @@ Teamy ist das Tinder für Gründer, Partner und Sponsoren. Es verbindet Gleichge
 - Steliyan Georgiev (Frontend)
 - Sven Jung (Frontend)
 
-![Screenshot 1](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic2.jpeg)
 ![Screenshot 1](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic1.jpeg)
+![Screenshot 1](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic2.jpeg)

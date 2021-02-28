@@ -9,12 +9,12 @@ namespace Db_access
 {
     public class Handler
     {
-        public static void getCards(string[] tags, int filterTypeIndex, string cs )
+        public static void getCards(string[] tags, int filterTypeIndex, string cs)
         {
             //string cs = @"server=localhost;userid=dbuser;password=s$cret;database=testdb";
 
             string sql = "SELECT * FROM cars";
-            
+
             if (filterTypeIndex <= 1)
             {
                 string queryUser = $"SELECT users_id_users FROM tags WHERE value = '{tags[0]}' ";
@@ -51,6 +51,7 @@ namespace Db_access
                     reader.Close();
                 }
             }
+
             using var con = new MySqlConnection(cs);
             con.Open();
 
@@ -59,7 +60,7 @@ namespace Db_access
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
         }
-        
+
 
         public static bool createUser(string authID, string cs)
         {
@@ -69,7 +70,8 @@ namespace Db_access
             using var cmd = new MySqlCommand();
             cmd.Connection = con;
 
-            cmd.CommandText = $"INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','','{ Enum.GetName(typeof(type), 0) }')";
+            cmd.CommandText =
+                $"INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','','{Enum.GetName(typeof(type), 0)}')";
             cmd.ExecuteNonQuery();
 
             return false;
@@ -86,7 +88,8 @@ namespace Db_access
                 using var cmd = new MySqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = $"UPDATE users SET type = '{Enum.GetName(typeof(type), typeIndex)}'WHERE  id_users = '{authID}'";
+                cmd.CommandText =
+                    $"UPDATE users SET type = '{Enum.GetName(typeof(type), typeIndex)}'WHERE  id_users = '{authID}'";
                 cmd.ExecuteNonQuery();
 
                 return true;
@@ -141,13 +144,14 @@ namespace Db_access
                     name = rdr.GetString(1),
                     description = rdr.GetString(2)
                 });
-                
+
                 var test = rdr.GetValue(3);
 
             }
 
             return result;
         }
+
         public static users getUser(string authID, string cs)
         {
 
@@ -160,7 +164,7 @@ namespace Db_access
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
 
-            users result = new users(); 
+            users result = new users();
             while (rdr.Read())
             {
                 result = new users
@@ -168,14 +172,14 @@ namespace Db_access
                     id_users = rdr.GetString(0),
                     name = rdr.GetString(1),
                     description = rdr.GetString(2),
-                    type = rdr.GetValue(3);
+                    type = (type) Enum.Parse(typeof(type), rdr.GetValue(3).ToString(), true)
                 };
-                var test = ;
-                
+
             }
 
             return result;
         }
+
         public static void getAllTags(string cs)
         {
             using var con = new MySqlConnection(cs);
@@ -194,25 +198,26 @@ namespace Db_access
             //}
         }
 
-    public static void UpdateUserTags(int userId, string[] tags, string cs)
-    {
-        string queryString = "DELETE FROM tags WHERE users_id_users ='" + userId + "';";
-
-
-        using (MySqlConnection connection = new MySqlConnection(cs))
+        public static void UpdateUserTags(int userId, string[] tags, string cs)
         {
-            MySqlCommand command = new MySqlCommand(queryString, connection);
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Close();
-            string queryStringAdd;
-            for (int i = 0; i < tags.Length; i++)
+            string queryString = "DELETE FROM tags WHERE users_id_users ='" + userId + "';";
+
+            using (MySqlConnection connection = new MySqlConnection(cs))
             {
-                string id_tags = Guid.NewGuid().ToString();
-                queryStringAdd = $"INSERT INTO `mesh_db`.`tags` (`id_tags`, `users_id_users`, `value`) VALUES('{id_tags}','{userId}','{tags[i]}');";
-                MySqlCommand cAdd = new MySqlCommand(queryStringAdd, connection);
-                MySqlDataReader r = cAdd.ExecuteReader();
-                r.Close();
+                MySqlCommand command = new MySqlCommand(queryString, connection);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                string queryStringAdd;
+                for (int i = 0; i < tags.Length; i++)
+                {
+                    string id_tags = Guid.NewGuid().ToString();
+                    queryStringAdd =
+                        $"INSERT INTO `mesh_db`.`tags` (`id_tags`, `users_id_users`, `value`) VALUES('{id_tags}','{userId}','{tags[i]}');";
+                    MySqlCommand cAdd = new MySqlCommand(queryStringAdd, connection);
+                    MySqlDataReader r = cAdd.ExecuteReader();
+                    r.Close();
+                }
             }
         }
     }

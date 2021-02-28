@@ -19,6 +19,31 @@ namespace Db_access
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
         }
+        
+
+        public static bool createUser(string authID, string cs)
+        {
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand();
+            cmd.Connection = con;
+
+            cmd.CommandText = $"INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','',)";
+            cmd.ExecuteNonQuery();
+        }
+
+        public static bool setUserName(string authID, string name, string cs)
+        {
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            using var cmd = new MySqlCommand();
+            cmd.Connection = con;
+
+            cmd.CommandText = $"UPDATE users SET name = '{name}',  email = 'mary.hill@classicmodelcars.com' WHERE  employeeNumber = 1056; INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','',)";
+            cmd.ExecuteNonQuery();
+        }
 
         public static void getAllTags(string cs)
         {

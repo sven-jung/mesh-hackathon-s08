@@ -42,6 +42,44 @@ class _MatchingViewState extends State<MatchingView> {
 
   Map json;
 
+  List<Map> fallback = [
+    {
+      "name": "Matthias Schwarz",
+      "maintag": "#BARMERChallenge",
+      "descr": "Wir suchen nach innovativen Ideen, wie wir StartUps leichter erreichen können.\nBewerben mit #DinoTrifftEinhorn",
+      "needtags": ["#StartUp", "#Idee"],
+      "pic": "assets/matthias.png"
+    },
+    {
+      "name": "Enes Baskal",
+      "maintag": "#BARMER",
+      "descr": "Wir suchen Startups, die Lust haben, BARMER bei Gesundheitspolitik zu unterstützen\nBewerben mit #GPChallenge",
+      "needtags": ["#StartUp", "#Idee"],
+      "pic": "assets/enes.png"
+    },
+    {
+      "name": "Jan Engbert",
+      "maintag": "#RedBullStartup",
+      "descr": "MESH braucht mehr RedBull. Ich brauche Ünterstützung!",
+      "needtags": ["#StrongMan", "#RedBull"],
+      "pic": "assets/jan_mesh_red_bull.jpg"
+    },
+    {
+      "name": "Teamy",
+      "maintag": "#StartUp",
+      "descr": "Wir sind die Plattform, wo StartUps und Partner zusammentreffen.",
+      "needtags": ["#Investor", "#BARMER"],
+      "pic": "assets/teamy_card.png"
+    },
+    {
+      "name": "MESH",
+      "maintag": "#MESH",
+      "descr": "Wir sind ein Hackathon für innovative StartUps. Bewerben mit #MESHAccepted",
+      "needtags": ["#StartUp", "#Idee"],
+      "pic": "assets/mesh_card.png"
+    },
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -223,8 +261,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           MediaQuery.of(context).size.height *
                                               0.45,
                                       child: json["cards"] != null && json["cards"][index] != null && json["cards"][index]["pic"] != null
-                                          ? Image.memory(json["cards"][index]["pic"]) : Image.asset(
-                                          "assets/jan_mesh_red_bull.jpg"),
+                                          ? Image.memory(json["cards"][index]["pic"]) : Image.asset(fallback[index]["pic"]),
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -232,7 +269,7 @@ class _MatchingViewState extends State<MatchingView> {
                                       children: [
                                         Text(
                                           json["cards"] != null && json["cards"][index] != null && json["cards"][index]["name"] != null
-                                              ? json["cards"][index]["name"] : "Jan Engbert",
+                                              ? json["cards"][index]["name"] : fallback[index]["name"],
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             color: Color(0xFF1d3557),
@@ -255,10 +292,11 @@ class _MatchingViewState extends State<MatchingView> {
                                               horizontal: 10, vertical: 2),
                                           child: Text(
                                             json["cards"] != null && json["cards"][index] != null && json["cards"][index]["maintag"] != null
-                                                ? json["cards"][index]["maintag"] : "#StartUp Idee",
+                                                ? json["cards"][index]["maintag"] : fallback[index]["maintag"],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
+                                              fontSize: 10
                                             ),
                                           ),
                                         ),
@@ -268,16 +306,14 @@ class _MatchingViewState extends State<MatchingView> {
                                     Text(
                                       json["cards"] != null && json["cards"][index] != null && json["cards"][index]["descr"] != null
                                           ? json["cards"][index]["descr"] :
-                                      "Meine Idee beschäftigt sich damit, Unmengen an Red Bull zu kaufen "
-                                      "und damit die Meme Competition zu gewinnen. "
-                                      "Außerdem bin ich CEO von Stratton Oakmont.\n",
+                                      fallback[index]["descr"],
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),
                                     ),
                                     Text(
-                                      "Ich suche:",
+                                      "\nIch suche:",
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Color(0xFF1d3557),
@@ -304,7 +340,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           child: Text(
                                             json["cards"] != null && json["cards"][index] != null && json["cards"][index]["tags"] != null && json["cards"][index]["tags"][0] != null
                                                 ? "#" + json["cards"][index]["tags"][0]
-                                                : "#Investor",
+                                                : fallback[index]["needtags"][0],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
@@ -330,7 +366,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           child: Text(
                                             json["cards"] != null && json["cards"][index] != null && json["cards"][index]["tags"] != null && json["cards"][index]["tags"][1] != null
                                                 ? "#" + json["cards"][index]["tags"][1]
-                                                : "#Frontend Developer",
+                                                : fallback[index]["needtags"][1],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,

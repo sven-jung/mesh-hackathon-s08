@@ -1,20 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
+using Db_access.TableModels;
 using MySql.Data.MySqlClient;
 
 namespace Db_access
 {
     public class Handler
     {
-        public static void getCards(string cs )
+        public static void getCards(string[] tags, int filterTypeIndex, string cs )
         {
             //string cs = @"server=localhost;userid=dbuser;password=s$cret;database=testdb";
 
+            string sql = "SELECT * FROM cars";
+            
+            if (filterTypeIndex <= 1)
+            {
+
+            }
+            else
+            {
+
+            }
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string sql = "SELECT * FROM cars";
+            //string sql = "SELECT * FROM cars";
             using var cmd = new MySqlCommand(sql, con);
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
@@ -29,10 +41,33 @@ namespace Db_access
             using var cmd = new MySqlCommand();
             cmd.Connection = con;
 
-            cmd.CommandText = $"INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','','founder')";
+            cmd.CommandText = $"INSERT INTO users(id_users, name, description, type) VALUES('{authID}','','','{ Enum.GetName(typeof(type), 0) }')";
             cmd.ExecuteNonQuery();
 
             return false;
+        }
+
+        public static bool setUserType(string authID, int typeIndex, string cs)
+        {
+            try
+            {
+
+                using var con = new MySqlConnection(cs);
+                con.Open();
+
+                using var cmd = new MySqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = $"UPDATE users SET type = '{Enum.GetName(typeof(type), typeIndex)}'WHERE  id_users = '{authID}'";
+                cmd.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public static bool setUserName(string authID, string name, string cs)
@@ -56,10 +91,63 @@ namespace Db_access
             {
                 return false;
             }
-
-
         }
 
+
+        public static List<users> getAllUsers(string cs)
+        {
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            string sql = "SELECT *  FROM users";
+            using var cmd = new MySqlCommand(sql, con);
+
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+
+            List<users> result = new List<users>();
+            while (rdr.Read())
+            {
+                result.Add(new users
+                {
+                    id_users = rdr.GetString(0),
+                    name = rdr.GetString(1),
+                    description = rdr.GetString(2)
+                });
+                
+                var test = rdr.GetValue(3);
+
+            }
+
+            return result;
+        }
+        public static users getUser(string authID, string cs)
+        {
+
+            var t = getAllUsers(cs);
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            string sql = $"SELECT * FROM users WHERE  id_users = '{authID}'";
+            using var cmd = new MySqlCommand(sql, con);
+
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+
+            users result = new users(); 
+            while (rdr.Read())
+            {
+                result = new users
+                {
+                    id_users = rdr.GetString(0),
+                    name = rdr.GetString(1),
+                    description = rdr.GetString(2),
+                    type = rdr.GetValue(3);
+                };
+                var test = ;
+                
+            }
+
+            return result;
+        }
         public static void getAllTags(string cs)
         {
             using var con = new MySqlConnection(cs);
@@ -91,7 +179,7 @@ namespace Db_access
 
             }
 
-            queryString += " AND users_id_users = '" + userID + "';";
+            queryString += " AND users_id_users = '" + userId + "';";
 
             using (MySqlConnection connection = new MySqlConnection(cs))
             {

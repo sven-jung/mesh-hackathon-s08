@@ -9,6 +9,7 @@ namespace Db_access.TableModels
         public string id_users { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public type type { get; set; }
     }
 
     public enum type { 

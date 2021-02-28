@@ -1,7 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 import 'package:mesh_app_social/auth/name.dart';
 
 import '../main.dart';
@@ -12,6 +15,50 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future _makePutRequest() async {
+    // set up PUT request arguments
+    try {
+      String url =
+          'http://teamy.eu-de.mybluemix.net/api/register?email=$mail&password=$password';
+      Map<String, String> headers = {"Content-type": "application/json"};
+      String json = '{}'; // make PUT request
+      print(url);
+      Response response = await post(url,
+          headers: headers, body: json); // check the status code for the result
+      int statusCode = response
+          .statusCode; // this API passes back the updated item with the id added
+      if (statusCode == 200) {
+        // make GET request
+        String url2 =
+            'http://teamy.eu-de.mybluemix.net/api/token?username=$mail&password=$password';
+        print(url2);
+        Response response2 =
+            await post(url2); // sample info available in response
+        int statusCode2 = response2.statusCode;
+        if (statusCode2 == 200) {
+          Map<String, String> headers2 = response2.headers;
+          String contentType2 = headers2['content-type'];
+          Map json2 =
+              jsonDecode(response2.body); // TODO convert json to object...
+          MyApp.prefs.setString("access_Token", json2["access_Token"]);
+          MyApp.prefs.setString("userName", json2["userName"]);
+          print(json2["access_Token"]);
+          print(json2["userName"]);
+          print("Put successful");
+          return true;
+        }
+        print(statusCode2);
+        return false;
+      } else {
+        print(statusCode);
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   _getButton({String text, Function fn, colors}) {
     double borderRadius = 999;
 
@@ -67,6 +114,9 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
+  String mail;
+  String password;
 
   @override
   Widget build(BuildContext context) {
@@ -186,8 +236,10 @@ class _LoginState extends State<Login> {
                                         fontSize: 25,
                                       ),
                                       autofocus: true,
-                                      onChanged: (val) {
-                                        setState(() {});
+                                      onChanged: (val1) {
+                                        setState(() {
+                                          mail = val1;
+                                        });
                                       },
                                     ),
                                     TextField(
@@ -205,8 +257,10 @@ class _LoginState extends State<Login> {
                                         fontSize: 25,
                                       ),
                                       autofocus: true,
-                                      onChanged: (val) {
-                                        setState(() {});
+                                      onChanged: (val2) {
+                                        setState(() {
+                                          password = val2;
+                                        });
                                       },
                                     ),
                                     Row(
@@ -220,6 +274,10 @@ class _LoginState extends State<Login> {
                                                 TextStyle(color: Colors.white),
                                           ),
                                           onTap: () {
+                                            setState(() {
+                                              mail = null;
+                                              password = null;
+                                            });
                                             Navigator.pop(context);
                                           },
                                         ),
@@ -230,11 +288,14 @@ class _LoginState extends State<Login> {
                                                 TextStyle(color: Colors.white),
                                           ),
                                           onTap: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Name()));
+                                            _makePutRequest().then((value) {
+                                              Navigator.pop(context);
+                                              Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Name()));
+                                            });
                                           },
                                         )
                                       ],

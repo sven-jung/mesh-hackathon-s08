@@ -21,11 +21,14 @@ class Skills extends StatefulWidget {
 }
 
 class _SkillsState extends State<Skills> {
-  Future _makePutRequest(mail, password) async {
+  Future _makePutRequest(List<String> stringList) async {
     // set up PUT request arguments
     try {
+      String s = '[';
+      stringList.forEach((el) => s = s+'"'+el+'",');
+      s = s.substring(0, s.length-1) + ']';
       String url =
-          'https://localhost:44356/api/register?email=$mail&password=$password';
+          'https://localhost:44356/api/tasks?tasks=$s';
       String token = MyApp.prefs.getString("access_Token");
       Map<String, String> headers = {
         "Content-type": "application/json",
@@ -214,7 +217,7 @@ class _SkillsState extends State<Skills> {
                     GestureDetector(
                       onTap: () {
                         FocusScope.of(context).requestFocus(new FocusNode());
-                        _makePutRequest("", "password").then(
+                        _makePutRequest(hashtags).then(
                           (value) => Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

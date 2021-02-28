@@ -15,16 +15,17 @@ class Type extends StatefulWidget {
 }
 
 class _TypeState extends State<Type> {
-  Future _makePutRequest(mail, password) async {
+  Future _makePutRequest(isInvestor) async {
     // set up PUT request arguments
     try {
+      /// Map Investor → 0 | Founder → 1
+      int type = isInvestor ? 0 : 1;
       String url =
-          'https://localhost:44356/api/register?email=$mail&password=$password';
+          'http://teamy.eu-de.mybluemix.net/api/user/edit/type?type=$type';
       String token = MyApp.prefs.getString("access_Token");
       Map<String, String> headers = {
         "Content-type": "application/json",
-        "key": "Authorization",
-        "value": "Bearer $token"
+        "Authorization": "Bearer $token",
       };
       String json = '{}'; // make PUT request
       Response response = await put(url,
@@ -97,12 +98,12 @@ class _TypeState extends State<Type> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      _makePutRequest(false).then((value) => Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LookingFor(
                                     isInvestor: false,
-                                  )));
+                                  ))));
                     },
                     child: GlassmorphicContainer(
                       width: MediaQuery.of(context).size.width * 0.9,
@@ -154,12 +155,12 @@ class _TypeState extends State<Type> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      _makePutRequest(true).then((value) => Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => LookingFor(
                                     isInvestor: true,
-                                  )));
+                                  ))));
                     },
                     child: GlassmorphicContainer(
                       width: MediaQuery.of(context).size.width * 0.9,

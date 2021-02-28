@@ -288,12 +288,14 @@ class _LoginState extends State<Login> {
                                                 TextStyle(color: Colors.white),
                                           ),
                                           onTap: () {
-                                            _makePutRequest().then((value) =>
-                                                Navigator.pushReplacement(
+                                            _makePutRequest().then((value) {
+                                              Navigator.pop(context);
+                                              Navigator.pushReplacement(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            Name())));
+                                                            Name()));
+                                            });
                                           },
                                         )
                                       ],

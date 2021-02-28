@@ -14,7 +14,7 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
-  Future _makePutRequest(mail, password) async {
+  Future _makePutRequest() async {
     // set up PUT request arguments
     try {
       String url =
@@ -160,7 +160,7 @@ class _NameState extends State<Name> {
                               FocusScope.of(context)
                                   .requestFocus(new FocusNode());
 
-                              _makePutRequest("", "").then(
+                              _makePutRequest().then(
                                 (value) => Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(

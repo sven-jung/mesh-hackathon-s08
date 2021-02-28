@@ -26,5 +26,5 @@ Teamy ist das Tinder für Gründer, Partner und Sponsoren. Es verbindet Gleichge
 
 
 # Screenshots
-![Screenshot 1](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic1.jpeg){:height="50%" width="50%"}
-![Screenshot 2](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic2.jpeg){:height="50%" width="50%"}
+![Screenshot 1](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic1.jpeg)
+![Screenshot 2](https://github.com/sven-jung/mesh-hackathon-s08/blob/main/mesh_app_social/pic2.jpeg)

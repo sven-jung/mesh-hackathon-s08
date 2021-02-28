@@ -26,7 +26,7 @@ namespace Mesh_s08_API.Controllers
 
         [Route("api/swipe/cards")]
         [HttpGet]
-        public async Task<Card[]> getCards(FilerModel filter,int size = 5)
+        public async Task<card[]> getCards(FilerModel filter,int size = 5)
         {
             //call the db with the filter
             var userAge = 18;

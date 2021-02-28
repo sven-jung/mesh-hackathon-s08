@@ -9,7 +9,7 @@ namespace Db_access
 {
     public class Handler
     {
-        public static void getCards(string[] tags, int filterTypeIndex, string cs)
+        public static List<card> getCards(string[] tags, int filterTypeIndex, string cs)
         {
             //string cs = @"server=localhost;userid=dbuser;password=s$cret;database=testdb";
 
@@ -55,13 +55,13 @@ namespace Db_access
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            //string sql = "SELECT * FROM cars";
             using var cmd = new MySqlCommand(sql, con);
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
+
+            return new List<card>();
         }
-
-
+        
         public static bool createUser(string authID, string cs)
         {
             using var con = new MySqlConnection(cs);
@@ -124,7 +124,6 @@ namespace Db_access
             }
         }
 
-
         public static List<users> getAllUsers(string cs)
         {
             using var con = new MySqlConnection(cs);
@@ -154,7 +153,6 @@ namespace Db_access
 
         public static users getUser(string authID, string cs)
         {
-
             var t = getAllUsers(cs);
             using var con = new MySqlConnection(cs);
             con.Open();
@@ -198,6 +196,10 @@ namespace Db_access
             //}
         }
 
+        public static int getUserAge(string userId, string cs)
+        {
+            return 21;
+        }
         public static List<string> getUserTags(string userId, string cs)
         {
             // SELECT * FROM tags WHERE users_id_users = userId;
@@ -223,6 +225,7 @@ namespace Db_access
         {
             return false;
         }
+        
         public static bool UpdateUserTags(string userId, string[] tags, string cs)
         {
             try

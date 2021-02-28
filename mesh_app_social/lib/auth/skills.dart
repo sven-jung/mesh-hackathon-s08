@@ -28,7 +28,7 @@ class _SkillsState extends State<Skills> {
       stringList.forEach((el) => s = s+'"'+el+'",');
       s = s.substring(0, s.length-1) + ']';
       String url =
-          'https://localhost:44356/api/tasks?tasks=$s';
+          'http://teamy.eu-de.mybluemix.net/api/user/edit/tasks?tasks=$s';
       String token = MyApp.prefs.getString("access_Token");
       Map<String, String> headers = {
         "Content-type": "application/json",

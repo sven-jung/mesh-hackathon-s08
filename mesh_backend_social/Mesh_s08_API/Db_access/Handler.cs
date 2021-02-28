@@ -170,9 +170,36 @@ namespace Db_access
             //}
         }
 
-        public static void UpdateUserTags(int userId, string[] tags, string cs)
+        public static List<string> getUserTags(string userId, string cs)
         {
-            string queryString = "DELETE FROM tags WHERE users_id_users ='" + userId + "';";
+            // SELECT * FROM tags WHERE users_id_users = userId;
+
+            using var con = new MySqlConnection(cs);
+            con.Open();
+
+            string sql = $"SELECT * FROM tags WHERE users_id_users = '{userId}'";
+            using var cmd = new MySqlCommand(sql, con);
+
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+
+            List<string> result = new List<string>();
+            while (rdr.Read())
+            {
+                result.Add(rdr.GetString(2));
+            }
+
+            return result;
+        }
+
+        public static bool updateImg(string userId, string cs)
+        {
+            return false;
+        }
+        public static bool UpdateUserTags(string userId, string[] tags, string cs)
+        {
+            try
+            {
+                string queryString = "DELETE FROM tags WHERE users_id_users ='" + userId + "';";
 
             using (MySqlConnection connection = new MySqlConnection(cs))
             {
@@ -190,6 +217,13 @@ namespace Db_access
                     MySqlDataReader r = cAdd.ExecuteReader();
                     r.Close();
                 }
+            }
+
+            return true;
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
     }

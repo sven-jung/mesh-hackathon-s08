@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Db_access;
 using Db_access.TableModels;
+using Mesh_s08_API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -23,9 +24,16 @@ namespace Mesh_s08_API.Controllers
         [Route("api/user/edit/tags")]
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> EditTags(string[] tasks)
+        public async Task<IActionResult> EditTags(string[] Tags)
         {
-            return Ok();
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (Handler.UpdateUserTags(userId, Tags, _configuration.GetConnectionString("DefaultConnection")))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
 
         [Route("api/user/edit/name")]
@@ -74,11 +82,21 @@ namespace Mesh_s08_API.Controllers
         [Route("api/get/user")]
         [HttpGet]
         [Authorize]
-        public async Task<users> getcurrUser()
+        public async Task<UserModel> getcurrUser()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = Handler.getUser(userId, _configuration.GetConnectionString("DefaultConnection"));
-            return user;
+            var tags = Handler.getUserTags(userId, _configuration.GetConnectionString("DefaultConnection"));
+
+
+            return new UserModel
+            {
+                type = user.type,
+                description = user.description,
+                name = user.name,
+                Tags = tags.ToArray()
+                
+            };
         }
     }
 }

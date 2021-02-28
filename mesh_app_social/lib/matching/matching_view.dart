@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:glassmorphism/glassmorphism.dart';
@@ -11,25 +12,25 @@ class MatchingView extends StatefulWidget {
 }
 
 class _MatchingViewState extends State<MatchingView> {
-  _makeGetRequest() async {
+  _makeGetRequest({String params = ""}) async {
     // make GET request
     try {
-      String url = 'http://teamy.eu-de.mybluemix.net/api/swipe/cards';
+      String url = 'http://teamy.eu-de.mybluemix.net/api/swipe/cards?$params';
       Response response = await get(url); // sample info available in response
       int statusCode = response.statusCode;
       Map<String, String> headers = response.headers;
       String contentType = headers['content-type'];
-      Map json = jsonDecode(response.body);
-    } catch (e) {} // TODO convert json to object...
+      setState(() {
+        json = jsonDecode(response.body);
+      });
+    } catch (e) {
+      setState(() {
+        json = {};
+      });
+    }
   }
 
-  List cardsList = [
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-  ];
+  Map json;
 
   @override
   void initState() {
@@ -37,12 +38,16 @@ class _MatchingViewState extends State<MatchingView> {
     _makeGetRequest();
   }
 
+  _filter() {
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     double borderRadius = 20;
     CardController controller;
 
-    return Stack(
+    return json == null ? Center(child: CupertinoActivityIndicator(),) : Stack(
       alignment: Alignment.center,
       children: [
         Padding(
@@ -84,7 +89,7 @@ class _MatchingViewState extends State<MatchingView> {
                         color: Colors.white,
                         size: 25,
                       ),
-                      onPressed: () {},
+                      onPressed: _filter,
                     ),
                   ],
                 ),
@@ -97,7 +102,7 @@ class _MatchingViewState extends State<MatchingView> {
                     swipeUp: true,
                     swipeDown: true,
                     orientation: AmassOrientation.BOTTOM,
-                    totalNum: cardsList.length,
+                    totalNum: json["cards"] != null  ? json["cards"].length : 5,
                     stackNum: 3,
                     swipeEdge: 4.0,
                     maxWidth: MediaQuery.of(context).size.width * 0.8 + 1,
@@ -156,7 +161,7 @@ class _MatchingViewState extends State<MatchingView> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.45,
-                                      child: Image.asset(
+                                      child: json["cards"][index]["pic"] != null ? Image.memory(json["cards"][index]["pic"]) : Image.asset(
                                           "assets/jan_mesh_red_bull.jpg"),
                                     ),
                                     Row(
@@ -164,7 +169,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "Jan Engbert",
+                                          json["cards"][index]["name"] != null ? json["cards"][index]["name"] : "Jan Engbert",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             color: Color(0xFF1d3557),
@@ -186,7 +191,7 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            "#StartUp Idee",
+                                            json["cards"][index]["maintag"] != null ? json["cards"][index]["maintag"] : "#StartUp Idee",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
@@ -197,6 +202,7 @@ class _MatchingViewState extends State<MatchingView> {
                                     ),
                                     Padding(padding: EdgeInsets.all(10)),
                                     Text(
+                                      json["cards"][index]["descr"] != null ? json["cards"][index]["descr"] :
                                       "Meine Idee beschäftigt sich damit, Unmengen an Red Bull zu kaufen "
                                       "und damit die Meme Competition zu gewinnen. "
                                       "Außerdem bin ich CEO von Stratton Oakmont.\n",
@@ -231,7 +237,9 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            "#Investor",
+                                            json["cards"][index]["tags"] != null && json["cards"][index]["tags"][0] != null
+                                                ? "#" + json["cards"][index]["tags"][0]
+                                                : "#Investor",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
@@ -255,7 +263,9 @@ class _MatchingViewState extends State<MatchingView> {
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 2),
                                           child: Text(
-                                            "#Frontend Developer",
+                                            json["cards"][index]["tags"] != null && json["cards"][index]["tags"][1] != null
+                                                ? "#" + json["cards"][index]["tags"][1]
+                                                : "#Frontend Developer",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,

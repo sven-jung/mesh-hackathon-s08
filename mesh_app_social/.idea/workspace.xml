@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dbde77c-9cf1-4ac6-8a8e-a133b5d54fea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/name.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/name.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/skills.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/skills.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auth/type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth/type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/matching/matching_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/matching/matching_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/profile_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/profile_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -19,19 +19,21 @@ class _LoginState extends State<Login> {
     // set up PUT request arguments
     try {
       String url =
-          'https://localhost:44356/api/register?email=$mail&password=$password';
+          'http://teamy.eu-de.mybluemix.net/api/register?email=$mail&password=$password';
       Map<String, String> headers = {"Content-type": "application/json"};
       String json = '{}'; // make PUT request
-      Response response = await put(url,
+      print(url);
+      Response response = await post(url,
           headers: headers, body: json); // check the status code for the result
       int statusCode = response
           .statusCode; // this API passes back the updated item with the id added
       if (statusCode == 200) {
         // make GET request
         String url2 =
-            'https://localhost:44356/api/token?username=$mail&password=$password';
+            'http://teamy.eu-de.mybluemix.net/api/token?username=$mail&password=$password';
+        print(url2);
         Response response2 =
-            await get(url2); // sample info available in response
+            await post(url2); // sample info available in response
         int statusCode2 = response2.statusCode;
         if (statusCode2 == 200) {
           Map<String, String> headers2 = response2.headers;
@@ -40,14 +42,19 @@ class _LoginState extends State<Login> {
               jsonDecode(response2.body); // TODO convert json to object...
           MyApp.prefs.setString("access_Token", json2["access_Token"]);
           MyApp.prefs.setString("userName", json2["userName"]);
+          print(json2["access_Token"]);
+          print(json2["userName"]);
+          print("Put successful");
           return true;
         }
+        print(statusCode2);
         return false;
       } else {
         print(statusCode);
         return false;
       }
     } catch (e) {
+      print(e);
       return false;
     }
   }

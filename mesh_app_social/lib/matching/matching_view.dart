@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 
 class MatchingView extends StatefulWidget {
   @override
@@ -8,6 +11,17 @@ class MatchingView extends StatefulWidget {
 }
 
 class _MatchingViewState extends State<MatchingView> {
+  _makeGetRequest() async {
+    // make GET request
+    try {
+      String url = 'http://teamy.eu-de.mybluemix.net/api/swipe/cards';
+      Response response = await get(url); // sample info available in response
+      int statusCode = response.statusCode;
+      Map<String, String> headers = response.headers;
+      String contentType = headers['content-type'];
+      Map json = jsonDecode(response.body);
+    } catch (e) {} // TODO convert json to object...
+  }
 
   List cardsList = [
     "a",
@@ -18,8 +32,13 @@ class _MatchingViewState extends State<MatchingView> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    _makeGetRequest();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     double borderRadius = 20;
     CardController controller;
 
@@ -39,8 +58,8 @@ class _MatchingViewState extends State<MatchingView> {
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width*0.9,
-          height: MediaQuery.of(context).size.height*0.9,
+          width: MediaQuery.of(context).size.width * 0.9,
+          height: MediaQuery.of(context).size.height * 0.9,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,8 +90,8 @@ class _MatchingViewState extends State<MatchingView> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width*0.9,
-                height: MediaQuery.of(context).size.height*0.8,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.8,
                 child: Center(
                   child: TinderSwapCard(
                     swipeUp: true,
@@ -81,25 +100,28 @@ class _MatchingViewState extends State<MatchingView> {
                     totalNum: cardsList.length,
                     stackNum: 3,
                     swipeEdge: 4.0,
-                    maxWidth: MediaQuery.of(context).size.width*0.8 + 1,
-                    maxHeight: MediaQuery.of(context).size.height*0.75 + 1,
-                    minWidth: MediaQuery.of(context).size.width*0.8,
-                    minHeight: MediaQuery.of(context).size.height*0.75,
+                    maxWidth: MediaQuery.of(context).size.width * 0.8 + 1,
+                    maxHeight: MediaQuery.of(context).size.height * 0.75 + 1,
+                    minWidth: MediaQuery.of(context).size.width * 0.8,
+                    minHeight: MediaQuery.of(context).size.height * 0.75,
                     cardBuilder: (context, index) {
                       return Center(
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(borderRadius)),
                             boxShadow: [
-                              BoxShadow(color: Colors.grey.withOpacity(0.3),
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
                                 spreadRadius: 5,
                                 blurRadius: 7,
-                                offset: Offset(0, 3),),
+                                offset: Offset(0, 3),
+                              ),
                             ],
                           ),
                           child: GlassmorphicContainer(
-                            width: MediaQuery.of(context).size.width*0.8,
-                            height: MediaQuery.of(context).size.height*0.75,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.75,
                             border: 2,
                             blur: 50,
                             linearGradient: LinearGradient(
@@ -109,8 +131,7 @@ class _MatchingViewState extends State<MatchingView> {
                                   Colors.white.withOpacity(0.1),
                                   Colors.white.withOpacity(0.1),
                                   Colors.white.withOpacity(0.1),
-                                ]
-                            ),
+                                ]),
                             borderGradient: LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
@@ -122,19 +143,25 @@ class _MatchingViewState extends State<MatchingView> {
                             borderRadius: borderRadius,
                             child: Center(
                               child: Container(
-                                width: MediaQuery.of(context).size.width*0.7,
-                                height: MediaQuery.of(context).size.height*0.7,
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.7,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: MediaQuery.of(context).size.width*0.7,
-                                      height: MediaQuery.of(context).size.height*0.45,
-                                      child: Image.asset("assets/jan_mesh_red_bull.jpg"),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.7,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.45,
+                                      child: Image.asset(
+                                          "assets/jan_mesh_red_bull.jpg"),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           "Jan Engbert",
@@ -145,7 +172,8 @@ class _MatchingViewState extends State<MatchingView> {
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(999)),
                                             gradient: LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,
@@ -155,7 +183,8 @@ class _MatchingViewState extends State<MatchingView> {
                                               ],
                                             ),
                                           ),
-                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10, vertical: 2),
                                           child: Text(
                                             "#StartUp Idee",
                                             textAlign: TextAlign.center,
@@ -169,8 +198,8 @@ class _MatchingViewState extends State<MatchingView> {
                                     Padding(padding: EdgeInsets.all(10)),
                                     Text(
                                       "Meine Idee beschäftigt sich damit, Unmengen an Red Bull zu kaufen "
-                                          "und damit die Meme Competition zu gewinnen. "
-                                          "Außerdem bin ich CEO von Stratton Oakmont.\n",
+                                      "und damit die Meme Competition zu gewinnen. "
+                                      "Außerdem bin ich CEO von Stratton Oakmont.\n",
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.white,
@@ -188,7 +217,8 @@ class _MatchingViewState extends State<MatchingView> {
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(999)),
                                             gradient: LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,
@@ -198,7 +228,8 @@ class _MatchingViewState extends State<MatchingView> {
                                               ],
                                             ),
                                           ),
-                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10, vertical: 2),
                                           child: Text(
                                             "#Investor",
                                             textAlign: TextAlign.center,
@@ -210,7 +241,8 @@ class _MatchingViewState extends State<MatchingView> {
                                         Padding(padding: EdgeInsets.all(2.5)),
                                         Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(999)),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(999)),
                                             gradient: LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,
@@ -220,7 +252,8 @@ class _MatchingViewState extends State<MatchingView> {
                                               ],
                                             ),
                                           ),
-                                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10, vertical: 2),
                                           child: Text(
                                             "#Frontend Developer",
                                             textAlign: TextAlign.center,
@@ -240,14 +273,16 @@ class _MatchingViewState extends State<MatchingView> {
                       );
                     },
                     cardController: controller = CardController(),
-                    swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
-                      if(align.x < 0) {
+                    swipeUpdateCallback:
+                        (DragUpdateDetails details, Alignment align) {
+                      if (align.x < 0) {
                         //TODO: LEFT
-                      } else if(align.x > 0) {
+                      } else if (align.x > 0) {
                         //TODO: RIGHT
                       }
                     },
-                    swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
+                    swipeCompleteCallback:
+                        (CardSwipeOrientation orientation, int index) {
                       // Get orientation and index of swiped card
                     },
                   ),

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:http/http.dart';
 
 class ProfileView extends StatefulWidget {
   @override
@@ -7,6 +10,24 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  _makeGetRequest() async {
+    // make GET request
+    try {
+      String url = 'https://jsonplaceholder.typicode.com/posts';
+      Response response = await get(url); // sample info available in response
+      int statusCode = response.statusCode;
+      Map<String, String> headers = response.headers;
+      String contentType = headers['content-type'];
+      Map json = jsonDecode(response.body);
+    } catch (e) {} // TODO convert json to object...
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _makeGetRequest();
+  }
+
   _getButton({String text, Function fn, colors}) {
     double borderRadius = 999;
 
@@ -129,6 +150,10 @@ class _ProfileViewState extends State<ProfileView> {
                       _getButton(text: "Meine Ideen", fn: () {}, colors: [
                         Colors.orange[700].withOpacity(0.7),
                         Colors.orange[700].withOpacity(0.5)
+                      ]),
+                      _getButton(text: "Meine Challenges", fn: () {}, colors: [
+                        Colors.green[700].withOpacity(0.7),
+                        Colors.greenAccent[700].withOpacity(0.5)
                       ]),
                     ],
                   ),

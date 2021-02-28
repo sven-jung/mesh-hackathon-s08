@@ -18,25 +18,28 @@ class _NameState extends State<Name> {
     // set up PUT request arguments
     try {
       String url =
-          'https://localhost:44356/api/register?email=$mail&password=$password';
+          'http://teamy.eu-de.mybluemix.net/api/user/edit/name?name=$name';
       String token = MyApp.prefs.getString("access_Token");
       Map<String, String> headers = {
         "Content-type": "application/json",
-        "key": "Authorization",
-        "value": "Bearer $token"
+        "Authorization": "Bearer $token",
       };
+      print(headers);
+      print(url);
       String json = '{}'; // make PUT request
       Response response = await put(url,
           headers: headers, body: json); // check the status code for the result
       int statusCode = response
           .statusCode; // this API passes back the updated item with the id added
       if (statusCode == 200) {
+        print(statusCode);
         return true;
       } else {
         print(statusCode);
         return false;
       }
     } catch (e) {
+      print(e);
       return false;
     }
   }
@@ -156,6 +159,7 @@ class _NameState extends State<Name> {
                             onTap: () {
                               FocusScope.of(context)
                                   .requestFocus(new FocusNode());
+
                               _makePutRequest("", "").then(
                                 (value) => Navigator.pushReplacement(
                                   context,

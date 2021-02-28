@@ -65,25 +65,23 @@ namespace Db_access
 
         public static void updateUserTags(int userId, string[] tags, string cs)
         {
-            string value;
-
-            string queryString = "DELETE FROM tags WHERE value != ' " + tags[0] + "' ";
-
-            for (int i = 1; i < tags.Length; i++)
-            {
-                value = tags[i];
-                queryString += " AND value != '" + value + "'";
-
-            }
-
-            queryString += " AND users_id_users = '" + userID + "';";
+            string queryString = "DELETE FROM tags WHERE users_id_users ='" + userId + "';";
 
             using (MySqlConnection connection = new MySqlConnection(cs))
             {
                 MySqlCommand command = new MySqlCommand(queryString, connection);
-
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                string queryStringAdd;
+                for (int i = 0; i < tags.Length; i++)
+                {
+                    string id_tags = Guid.NewGuid().ToString();
+                    queryStringAdd = $"INSERT INTO `mesh_db`.`tags` (`id_tags`, `users_id_users`, `value`) VALUES('{id_tags}','{userId}','{tags[i]}');";
+                    MySqlCommand cAdd = new MySqlCommand(queryStringAdd, connection);
+                    MySqlDataReader r = cAdd.ExecuteReader();
+                    r.Close();
+                }
             }
 
         }

@@ -6,7 +6,7 @@ Teamy ist das Tinder für Gründer, Partner und Sponsoren. Es verbindet Gleichge
 - [App Download](https://github.com/sven-jung/mesh-hackathon-s08/tree/main/mesh_app_social/apk)
 - Frontend in Folder [mesh_app_social](https://github.com/sven-jung/mesh-hackathon-s08/tree/main/mesh_app_social)
 - Backend in Folder [mesh_backend_social](https://github.com/sven-jung/mesh-hackathon-s08/tree/main/mesh_backend_social)
-- Erstes Mockup in Folder[mockup](https://github.com/sven-jung/mesh-hackathon-s08/tree/main/mockup) 
+- Erstes Mockup in Folder [mockup](https://github.com/sven-jung/mesh-hackathon-s08/tree/main/mockup) 
 - [Präsentation](https://www.canva.com/design/DAEXaZg0OeA/_CcWAGwUV86AIjCnGn9AWQ/view?utm_content=DAEXaZg0OeA&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 
 # Team Social 08
